@@ -30,6 +30,10 @@
 /* =========================
    profile
 ========================= */
+#intro .ui-window__body {
+background: linear-gradient(to top, #e3fed3, #fff, #fff, #fff);
+}
+
 .intro-profile--compact{
   display: flex;
   flex-direction: column;

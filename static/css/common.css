@@ -640,7 +640,6 @@ strong{
   line-height: 1;
   letter-spacing: -0.02em;
   white-space: nowrap;
-  box-shadow: 0 5px 0 rgba(215,199,218,.55);
   transition:
     transform var(--speed-fast) ease,
     box-shadow var(--speed-fast) ease,

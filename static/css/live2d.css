@@ -45,6 +45,7 @@
 .portfolio-info__list{
   display: grid;
   gap: 12px;
+  padding-left: 0;
 }
 
 .portfolio-info__item{

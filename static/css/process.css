@@ -1,0 +1,164 @@
+.process-sec{
+  position: relative;
+}
+
+.process-tree{
+  --node-size: 44px;
+  --card-w: 320px;
+  --branch-gap: 48px;
+  --branch-line: 26px;
+  --step-gap: 0;
+
+  position: relative;
+  width: min(100%, 980px);
+  margin: 0 auto;
+  padding: 8px 0;
+}
+
+.process-tree__line{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    #f5b9d5 0%,
+    #e3c9f3 34%,
+    #cfdaf7 68%,
+    #bfe6b6 100%
+  );
+  box-shadow: 0 0 0 6px rgba(255,255,255,.72);
+}
+
+.process-step{
+  position: relative;
+  min-height: 80px;
+}
+
+.process-step + .process-step{
+  margin-top: var(--step-gap);
+}
+
+/* =========================
+   node
+========================= */
+.process-step__node{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: var(--node-size);
+  height: var(--node-size);
+  border: 2px solid #d7c7da;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ffffff 0%, #fff8fb 100%);
+  box-shadow: 0 8px 16px rgba(190,183,198,.12);
+  color: #d784ab;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* =========================
+   card
+========================= */
+.process-card{
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+  width: var(--card-w);
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  border: 2px solid #ddd0e3;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #f5fffb 0%, #fbf7ff 100%);
+  box-shadow: 0 10px 20px rgba(190,183,198,.10);
+  transition:
+    transform var(--speed-fast) ease,
+    box-shadow var(--speed-fast) ease,
+    border-color var(--speed-fast) ease;
+}
+
+.process-card:hover{
+  transform: translateY(calc(-50% - 2px));
+  box-shadow: var(--shadow-md);
+}
+
+.process-card__title{
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 1.04rem;
+  line-height: 1.35;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.process-card__desc{
+  margin: 6px 0 0;
+  color: var(--text-soft);
+  font-size: .92rem;
+  line-height: 1.55;
+  font-weight: 600;
+}
+
+/* =========================
+   left / right placement
+========================= */
+.process-step--left .process-card{
+  right: calc(50% + var(--branch-gap));
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.process-step--left .process-card::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: calc(var(--branch-line) * -1);
+  width: var(--branch-line);
+  height: 2px;
+  background: #d9cddd;
+  transform: translateY(-50%);
+}
+
+.process-step--right .process-card{
+  left: calc(50% + var(--branch-gap));
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.process-step--right .process-card::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: calc(var(--branch-line) * -1);
+  width: var(--branch-line);
+  height: 2px;
+  background: #d9cddd;
+  transform: translateY(-50%);
+}
+
+/* =========================
+   alternating tones
+========================= */
+.process-step:nth-child(odd) .process-card{
+  background: linear-gradient(135deg, #f3fffb 0%, #fbf8ff 100%);
+}
+
+.process-step:nth-child(even) .process-card{
+  background: linear-gradient(135deg, #fffafc 0%, #f5fbff 100%);
+}
+
+.process-card--accent{
+  border-color: #b8de9d;
+  background: linear-gradient(135deg, #f7fff3 0%, #f8fbff 100%) !important;
+}

@@ -1,0 +1,126 @@
+/* =========================
+   usage table
+========================= */
+.usage-sec{
+  position: relative;
+  background-color: var(--pink-50);
+  padding: 40px 20px;
+}
+
+.usage-sec .ui-window__body {
+    border-radius: 24px;
+    border: 3px solid var(--pink-300);
+}
+
+.usage-wrap{
+  width: min(100%, 1080px);
+  margin: 0 auto;
+}
+
+.usage-table__inner{
+  overflow: hidden;
+}
+
+.usage-table__head,
+.usage-table__row{
+  display: grid;
+  grid-template-columns: 120px repeat(5, minmax(0, 1fr));
+  gap: 0;
+  align-items: stretch;
+}
+
+.usage-table__head{
+  border-bottom: 1px solid rgba(215, 199, 218, .7);
+  background: linear-gradient(180deg, #fffdfd 0%, #fff8fb 100%);
+}
+
+.usage-table__corner{
+  min-height: 56px;
+}
+
+.usage-table__th{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  padding: 14px 10px;
+  color: var(--text-strong);
+  font-size: 17px;
+  font-weight: 800;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.usage-table__body{
+  display: flex;
+  flex-direction: column;
+}
+
+.usage-table__row{
+  border-bottom: 1px solid rgba(215, 199, 218, .45);
+}
+
+.usage-table__row:last-child{
+  border-bottom: 0;
+}
+
+.usage-table__type{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  justify-self: center;
+  min-width: 74px;
+  min-height: 34px;
+  padding: 8px 14px;
+  border: 2px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: var(--shadow-sm);
+}
+
+.usage-table__type.is-pink{
+  background: linear-gradient(180deg, #fffefe 0%, #ffe5f0 100%);
+  border-color: var(--line-pink);
+  color: #d784ab;
+}
+
+.usage-table__type.is-purple{
+  background: linear-gradient(180deg, #fffefe 0%, #f1ebff 100%);
+  color: #8a78b3;
+}
+
+.usage-table__td{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 72px;
+  padding: 10px;
+}
+
+.usage-mark{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.usage-mark.is-ok{
+  color: #de86b0;
+}
+
+.usage-mark.is-no{
+  color: #8ec6ea;
+}
+
+.usage-mark.is-empty{
+  color: var(--text-faint);
+}
+

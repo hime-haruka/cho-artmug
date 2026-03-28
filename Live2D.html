@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHO님 - Live2D</title>
+
+    <link rel="stylesheet" href="./static/css/common.css">
+    <link rel="stylesheet" href="./static/css/live2d.css">
+</head>
+<body>
+    <main class="main">
+        <section class="sec" id="intro"></section>
+        <section class="sec" id="collab"></section>
+        <section class="sec" id="notice"></section>
+
+        <section class="sec process-sec" id="process">
+            <div class="sec-head">
+                <div class="sec-head__inner">
+                <div class="sec-head__badge">
+                    <span class="ui-dot is-pink"></span>
+                    <span>PROCESS</span>
+                </div>
+                <h2 class="sec-head__title">작업 순서</h2>
+                </div>
+            </div>
+
+            <div class="process-tree">
+            <div class="process-tree__line"></div>
+
+            <div class="process-step process-step--left">
+                <div class="process-step__node">01</div>
+                <div class="process-card">
+                <h3 class="process-card__title">문의 및 견적 확인</h3>
+                </div>
+            </div>
+
+            <div class="process-step process-step--right">
+                <div class="process-step__node">02</div>
+                <div class="process-card">
+                <h3 class="process-card__title">러프 작업</h3>
+                </div>
+            </div>
+
+            <div class="process-step process-step--left">
+                <div class="process-step__node">03</div>
+                <div class="process-card">
+                <h3 class="process-card__title">컨펌 및 수정 (1회)</h3>
+                </div>
+            </div>
+
+            <div class="process-step process-step--right">
+                <div class="process-step__node">04</div>
+                <div class="process-card">
+                <h3 class="process-card__title">작업 시작</h3>
+                </div>
+            </div>
+
+            <div class="process-step process-step--left">
+                <div class="process-step__node">05</div>
+                <div class="process-card">
+                <h3 class="process-card__title">완성본 공개 (자잘한 수정)</h3>
+                </div>
+            </div>
+
+            <div class="process-step process-step--right">
+                <div class="process-step__node">06</div>
+                <div class="process-card">
+                <h3 class="process-card__title">리깅 시작</h3>
+                </div>
+            </div>
+
+            <div class="process-step process-step--left">
+                <div class="process-step__node">07</div>
+                <div class="process-card">
+                <h3 class="process-card__title">컨펌 및 수정 (2회)</h3>
+                </div>
+            </div>
+
+            <div class="process-step process-step--right">
+                <div class="process-step__node">08</div>
+                <div class="process-card process-card--accent">
+                <h3 class="process-card__title">작업물 전달</h3>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section class="sec usage-sec" id="usage"></section>
+        <section class="sec portfolio-sec" id="sample"></section>
+
+        <section class="sec showcase-sec" id="showcase">
+            <div class="showcase-wrap">
+
+                <div class="showcase-head">
+                <h2 class="showcase-title">쇼케이스</h2>
+                <p class="showcase-desc">리깅 쇼케이스 영상입니다. 썸네일을 클릭하면 유튜브로 이동합니다.</p>
+                </div>
+
+                <div class="showcase-slider">
+                <button class="showcase-nav prev"></button>
+
+                <div class="showcase-viewport">
+                    <div class="showcase-track" id="showcaseTrack"></div>
+                </div>
+
+                <button class="showcase-nav next"></button>
+                </div>
+
+                <div class="showcase-pagination" id="showcasePagination"></div>
+
+            </div>
+        </section>
+
+        <section class="sec form-sec" id="form">
+        <div class="form-wrap ui-window">
+            <div class="form-wrap__bar">
+            <div class="ui-window__title">
+                <span class="ui-dot is-butter"></span>
+                <span>CONTACT FORM</span>
+            </div>
+            </div>
+
+            <div class="form-wrap__body ui-window__body">
+            <div class="sec-head form-sec__head">
+                <div class="sec-head__inner">
+                <div class="sec-head__badge form-sec__badge">
+                    <span class="ui-dot is-butter"></span>
+                    <span>APPLICATION</span>
+                </div>
+                <h2 class="sec-head__title">신청 양식</h2>
+                <p class="sec-head__desc">
+                    아래 내용을 작성한 뒤 <strong>양식 복사</strong> 버튼으로 내용을 복사해서 전달해주세요.
+                </p>
+                </div>
+            </div>
+
+            <div class="form-notice">
+                <p>⚠ 수령 희망 날짜는 작업 일정에 따라 추가금이 발생할 수 있습니다.</p>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+                <div class="contact-grid contact-grid--2">
+                <div class="form-field">
+                    <label class="label" for="nickname">닉네임</label>
+                    <input
+                    class="ui-input"
+                    type="text"
+                    id="nickname"
+                    name="nickname"
+                    placeholder="닉네임을 입력해주세요."
+                    >
+                </div>
+
+                <div class="form-field">
+                    <label class="label" for="receiveDate">수령 희망 날짜</label>
+                    <input
+                    class="ui-input"
+                    type="date"
+                    id="receiveDate"
+                    name="receiveDate"
+                    placeholder="예: 3/15, 3월 15일, 3월 말"
+                    >
+                </div>
+                </div>
+
+                <div class="contact-grid contact-grid--2">
+                <fieldset class="form-box">
+                    <legend class="label">작업과정 비공개</legend>
+                    <div class="option-stack">
+                    <label class="radio-card">
+                        <input type="radio" name="privateProcess" value="YES (+50,000원)">
+                        <span>YES <small>(추가금 50,000원)</small></span>
+                    </label>
+
+                    <label class="radio-card">
+                        <input type="radio" name="privateProcess" value="NO" checked>
+                        <span>NO</span>
+                    </label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-box">
+                    <legend class="label">포트폴리오 비공개</legend>
+                    <div class="option-stack">
+                    <label class="radio-card">
+                        <input type="radio" name="privatePortfolio" value="YES (+100,000원)">
+                        <span>YES <small>(추가금 100,000원)</small></span>
+                    </label>
+
+                    <label class="radio-card">
+                        <input type="radio" name="privatePortfolio" value="NO" checked>
+                        <span>NO</span>
+                    </label>
+                    </div>
+                </fieldset>
+                </div>
+
+                <div class="form-field">
+                <span class="label">신청 타입</span>
+
+                <div class="type-grid">
+                    <label class="type-card">
+                    <input type="radio" name="applyType" value="일러스트만">
+                    <span class="type-card__inner">
+                        <strong>일러스트만</strong>
+                        <small>일러스트 작업 단독</small>
+                    </span>
+                    </label>
+
+                    <label class="type-card">
+                    <input type="radio" name="applyType" value="고가동 일러스트만">
+                    <span class="type-card__inner">
+                        <strong>고가동 일러스트만</strong>
+                        <small>고가동 대응 일러스트</small>
+                    </span>
+                    </label>
+
+                    <label class="type-card">
+                    <input type="radio" name="applyType" value="리깅만">
+                    <span class="type-card__inner">
+                        <strong>리깅만</strong>
+                        <small>리깅 작업 단독</small>
+                    </span>
+                    </label>
+
+                    <label class="type-card">
+                    <input type="radio" name="applyType" value="고가동 리깅만">
+                    <span class="type-card__inner">
+                        <strong>고가동 리깅만</strong>
+                        <small>고가동 대응 리깅</small>
+                    </span>
+                    </label>
+
+                    <label class="type-card">
+                    <input type="radio" name="applyType" value="일러스트 + 리깅">
+                    <span class="type-card__inner">
+                        <strong>일러스트 + 리깅</strong>
+                        <small>기본 세트 진행</small>
+                    </span>
+                    </label>
+
+                    <label class="type-card">
+                    <input type="radio" name="applyType" value="고가동 일러스트 + 고가동 리깅">
+                    <span class="type-card__inner">
+                        <strong>고가동 풀세트</strong>
+                        <small>고가동 일러스트 + 리깅</small>
+                    </span>
+                    </label>
+                </div>
+                </div>
+
+                <div class="form-field">
+                <label class="label" for="extraNotes">추가사항</label>
+                <textarea
+                    class="ui-textarea"
+                    id="extraNotes"
+                    name="extraNotes"
+                    placeholder="추가로 전달하고 싶은 내용이 있다면 자유롭게 작성해주세요."
+                ></textarea>
+                </div>
+
+                <div class="form-field">
+                <label class="label" for="characterInfo">신청 캐릭터</label>
+                <textarea
+                    class="ui-textarea"
+                    id="characterInfo"
+                    name="characterInfo"
+                    placeholder="아직 정해지지 않았다면 대략적인 분위기, 참고 자료, 원하는 방향 등을 작성해주세요."
+                ></textarea>
+                </div>
+
+                <div class="form-field">
+                <label class="label" for="collabInfo">협업사항</label>
+                <textarea
+                    class="ui-textarea"
+                    id="collabInfo"
+                    name="collabInfo"
+                    placeholder="협업 작가 유무, 진행 방식, 전달 예정 자료 등 협업 관련 내용을 작성해주세요."
+                ></textarea>
+                </div>
+
+                <div class="form-actions">
+                <button type="button" class="ui-btn is-ghost" id="resetFormBtn">초기화</button>
+                <button type="button" class="ui-btn is-butter" id="copyFormBtn">양식 복사</button>
+                </div>
+            </form>
+            </div>
+        </div>
+        </section>
+    </main>
+</body>
+<script src="./static/js/Live2D.js" defer></script>
+
+</html>

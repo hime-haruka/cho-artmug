@@ -1,0 +1,237 @@
+/* =========================
+   collab accordion
+========================= */
+.collab-accordion{
+  background: transparent;
+  overflow: visible;
+}
+
+.collab-accordion__shell{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.collab-accordion__trigger{
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+}
+
+.collab-accordion__window{
+  position: relative;
+  border: var(--line-w) solid var(--line-strong);
+  border-radius: 30px;
+  background: linear-gradient(180deg, #fffefe 0%, #fff7fa 100%);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition:
+    transform var(--speed-fast) ease,
+    box-shadow var(--speed-fast) ease,
+    border-color var(--speed-fast) ease;
+}
+
+.collab-accordion__window::before{
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.95);
+  pointer-events: none;
+}
+
+.collab-accordion__bar{
+  position: relative;
+  z-index: 2;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid rgba(215,199,218,.65);
+  background: linear-gradient(180deg, #fff8fb 0%, #f8fff5 100%);
+}
+
+.collab-accordion__dots{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.collab-accordion__hero{
+  position: relative;
+  z-index: 2;
+  padding: 28px 28px 30px;
+}
+
+.collab-accordion__kicker{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 8px 14px;
+  border: 2px solid var(--line-pink);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #fffefe 0%, #fff2f7 100%);
+  color: #d784ab;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  box-shadow: var(--shadow-sm);
+}
+
+.collab-accordion__title{
+  margin: 16px 0 0;
+  font-size: clamp(2rem, 3.6vw, 3.1rem);
+  line-height: 1.12;
+}
+
+.collab-accordion__desc{
+  margin: 12px 0 0;
+  max-width: 680px;
+  color: var(--text-soft);
+  line-height: 1.75;
+}
+
+.collab-accordion__chevron{
+  position: relative;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+}
+
+.collab-accordion__chevron::before,
+.collab-accordion__chevron::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 10px;
+  height: 2px;
+  border-radius: 999px;
+  background: #cf87ab;
+  transition: transform .24s ease;
+}
+
+.collab-accordion__chevron::before{
+  left: 1px;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.collab-accordion__chevron::after{
+  right: 1px;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.collab-accordion:not(.is-open) .collab-accordion__chevron::before{
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.collab-accordion:not(.is-open) .collab-accordion__chevron::after{
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.collab-accordion__panel{
+  overflow: hidden;
+  transition:
+    height .3s cubic-bezier(.22,1,.36,1),
+    opacity .22s ease;
+  opacity: 1;
+}
+
+.collab-accordion:not(.is-open) .collab-accordion__panel{
+  opacity: 0;
+}
+
+.collab-accordion__content{
+  padding: 0;
+}
+
+/* =========================
+   collab grid
+========================= */
+.collab-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.collab-card{
+  display: block;
+  color: inherit;
+}
+
+.collab-card__inner{
+  height: 100%;
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease;
+}
+
+.collab-card__top{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.collab-card__thumb{
+  width: 72px;
+  height: 72px;
+  flex: 0 0 72px;
+  overflow: hidden;
+  border: 2px solid var(--line-pink);
+  border-radius: 22px;
+  background: linear-gradient(180deg, #fffefe 0%, #fff4f8 100%);
+}
+
+.collab-card__thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.collab-card__thumb.is-empty{
+  border-color: var(--line);
+  background: linear-gradient(180deg, #fffefe 0%, #fffaf5 100%);
+}
+
+.collab-card__placeholder{
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: #d784ab;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.collab-card__meta{
+  min-width: 0;
+}
+
+.collab-card__badge{
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 6px 10px;
+  border: 2px solid var(--line-mint);
+  border-radius: 999px;
+  background: var(--surface-mint);
+  color: #5f7752;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.collab-card__name{
+  margin: 8px 0 0;
+  font-size: 1.3rem;
+  line-height: 1.2;
+}
+
+.collab-card__desc{
+  margin-top: 14px;
+  color: var(--text-soft);
+  font-size: .96rem;
+  line-height: 1.72;
+  white-space: pre-line;
+}

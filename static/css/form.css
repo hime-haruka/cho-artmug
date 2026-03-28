@@ -1,0 +1,240 @@
+/* =========================
+   form section
+========================= */
+.form-sec{
+  position: relative;
+}
+
+.form-wrap{
+  border-color: var(--line-butter);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.98) 0%, rgba(255,251,234,.95) 100%);
+}
+
+.form-wrap__bar{
+  position: relative;
+  z-index: 2;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  padding: 0 22px;
+  border-bottom: 1px solid color-mix(in srgb, var(--line-butter) 70%, white);
+  background:
+    linear-gradient(90deg, rgba(255,248,214,.7) 0%, rgba(255,255,255,.5) 100%);
+}
+
+.form-wrap__body{
+  padding: 28px;
+}
+
+.form-sec__head{
+  margin-bottom: 22px;
+}
+
+.form-sec__badge{
+  border-color: var(--line-butter);
+  background: linear-gradient(180deg, #fffefb 0%, #fff6c9 100%);
+  color: #8e7640;
+}
+
+.form-notice{
+  margin-bottom: 22px;
+  padding: 16px 18px;
+  border: 2px solid var(--line-butter);
+  border-radius: 20px;
+  background: linear-gradient(180deg, #fffdf3 0%, #fff7d7 100%);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.form-notice p{
+  color: var(--text-strong);
+  font-weight: 800;
+}
+
+.contact-form{
+  display: grid;
+  gap: 18px;
+}
+
+.contact-grid{
+  display: grid;
+  gap: 16px;
+}
+
+.contact-grid--2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.form-field{
+  display: grid;
+  gap: 8px;
+}
+
+.form-box{
+  min-width: 0;
+  margin: 0;
+  padding: 16px;
+  border: 2px solid var(--line-butter);
+  border-radius: 22px;
+  background: linear-gradient(180deg, #fffefe 0%, #fffbee 100%);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-box .label{
+  margin-bottom: 12px;
+}
+
+.option-stack{
+  display: grid;
+  gap: 10px;
+}
+
+.radio-card{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 2px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  cursor: pointer;
+  transition:
+    border-color var(--speed-fast) ease,
+    background var(--speed-fast) ease,
+    transform var(--speed-fast) ease;
+}
+
+.radio-card:hover{
+  transform: translateY(-1px);
+  border-color: var(--line-butter);
+  background: #fffdf2;
+}
+
+.radio-card input{
+  accent-color: var(--butter-400);
+}
+
+.radio-card span{
+  color: var(--text-strong);
+  font-weight: 700;
+}
+
+.radio-card small{
+  color: var(--text-soft);
+}
+
+.type-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.type-card{
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.type-card input{
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.type-card__inner{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  min-height: 110px;
+  padding: 18px 16px;
+  border: 2px solid var(--line-butter);
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, #fffefc 0%, #fff9df 100%);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--speed-fast) ease,
+    border-color var(--speed-fast) ease,
+    box-shadow var(--speed-fast) ease,
+    background var(--speed-fast) ease;
+}
+
+.type-card__inner::before{
+  content: "";
+  width: 18px;
+  height: 18px;
+  border: 2px solid #c8b36b;
+  border-radius: 6px;
+  background: #fffef8;
+}
+
+.type-card__inner strong{
+  color: var(--text-strong);
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.type-card__inner small{
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+
+.type-card:hover .type-card__inner{
+  transform: translateY(-2px);
+  border-color: #d9c06b;
+  box-shadow: 0 10px 24px rgba(226, 204, 110, .18);
+}
+
+.type-card input:checked + .type-card__inner{
+  border-color: #cdae4d;
+  background:
+    linear-gradient(180deg, #fff8cf 0%, #ffef9e 100%);
+  box-shadow: 0 12px 26px rgba(226, 204, 110, .26);
+}
+
+.type-card input:checked + .type-card__inner::before{
+  background: var(--butter-300);
+  box-shadow: inset 0 0 0 4px #fff9dd;
+}
+
+.form-actions{
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+.form-actions .ui-btn{
+  min-width: 118px;
+}
+
+@media (max-width: 900px){
+  .type-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px){
+  .form-wrap__body{
+    padding: 20px;
+  }
+
+  .contact-grid--2{
+    grid-template-columns: 1fr;
+  }
+
+  .type-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions{
+    flex-direction: column;
+  }
+
+  .form-actions .ui-btn{
+    width: 100%;
+  }
+}

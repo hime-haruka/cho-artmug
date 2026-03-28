@@ -1,0 +1,214 @@
+/* =========================
+   intro layout
+========================= */
+#intro{
+  margin-top: 40px;
+}
+
+.intro-layout{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.intro-card{
+  height: 100%;
+}
+
+.intro-card--profile,
+.intro-card--slots{
+  display: flex;
+}
+
+.intro-card--profile .ui-window__body,
+.intro-card--slots .ui-window__body{
+  width: 100%;
+  padding: 20px;
+}
+
+/* =========================
+   profile
+========================= */
+.intro-profile--compact{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.intro-profile__media{
+  aspect-ratio: auto;
+  height: auto;
+  max-width: 250px;
+}
+
+.intro-profile__media img{
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.intro-profile__body{
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-profile__eyebrow{
+  margin: 0 0 6px;
+  color: #d784ab;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.intro-profile__name{
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.04;
+}
+
+.intro-profile__text{
+  margin-top: 12px;
+  color: var(--text-soft);
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+.intro-profile__actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.intro-profile__btn{
+  min-width: 132px;
+  min-height: 42px;
+  padding: 0 16px;
+  font-size: 14px;
+}
+
+/* =========================
+   slots
+========================= */
+.intro-slots--compact{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+  justify-content: center;
+}
+
+.intro-slots__head{
+  margin-bottom: 2px;
+}
+
+.intro-slots__title{
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.2;
+}
+
+.intro-slots__desc{
+  margin: 6px 0 0;
+  color: var(--text-soft);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.slot-months--compact{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.slot-month--compact{
+  padding: 14px 16px;
+  border: 2px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #fffefe 0%, #fffaf5 100%);
+  box-shadow: var(--shadow-sm);
+}
+
+.slot-month__row{
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+}
+
+.slot-month__label{
+  font-size: 1.1rem;
+  line-height: 1;
+  font-weight: 800;
+  color: #d784ab;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+.slot-month__list{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.slot-chip{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 38px;
+  padding: 8px 14px;
+  border: 2px solid var(--line-strong);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.slot-chip__state{
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 800;
+}
+
+.slot-chip__label{
+  font-size: 12px;
+  line-height: 1;
+}
+
+.slot-chip.is-closed{
+  border-color: #e6bfd0;
+  background: #fff4f8;
+  color: #8f6277;
+}
+
+.slot-chip.is-closed .slot-chip__state{
+  color: #d985a8;
+}
+
+.slot-chip.is-open{
+  border-color: #b8de9d;
+  background: #f6fff1;
+  color: #5f7752;
+}
+
+.slot-chip.is-open .slot-chip__state{
+  color: #83c85f;
+}
+
+.slot-chip.is-appoint{
+  border-color: #eadb97;
+  background: #fffced;
+  color: #7d7142;
+}
+
+.slot-chip.is-appoint .slot-chip__state{
+  color: #cfb84f;
+}

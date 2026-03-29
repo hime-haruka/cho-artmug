@@ -271,9 +271,11 @@
     return Math.max(
       body ? body.scrollHeight : 0,
       body ? body.offsetHeight : 0,
+      body ? body.getBoundingClientRect().height : 0,
       html ? html.clientHeight : 0,
       html ? html.scrollHeight : 0,
-      html ? html.offsetHeight : 0
+      html ? html.offsetHeight : 0,
+      html ? html.getBoundingClientRect().height : 0
     );
   }
 
@@ -366,13 +368,13 @@
     mo.observe(document.body, {
       childList: true,
       subtree: true,
-      attributes: true,
-      characterData: false
+      attributes: true
     });
   }
 
   function bindResizeEvents() {
     window.addEventListener('resize', () => scheduleHeight(true));
+
     window.addEventListener('load', () => {
       scheduleHeight(true);
       sendLoading('done');
@@ -380,6 +382,7 @@
 
     window.addEventListener('message', function (e) {
       if (!e.data) return;
+
       if (e.data.type === 'ARTMUG_PARENT_READY') {
         scheduleHeight(true);
       }

@@ -1,0 +1,267 @@
+/* override */
+#intro .intro-layout {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center;
+}
+
+#intro .intro-card--profile {
+  width: 100% !important;
+  max-width: 880px !important;
+  margin: 0 auto !important;
+}
+
+/* 내부 여백 조금 키워서 여유감 */
+#intro .intro-profile {
+  padding: 28px 24px !important;
+}
+
+#intro .intro-profile__media img {
+  max-width: 220px !important;
+}
+
+#intro .intro-profile__body {
+  text-align: center;
+}
+
+#intro .intro-profile__actions {
+  justify-content: center !important;
+}
+
+/* =========================
+   3D portfolio override
+========================= */
+
+#sample .pf-wrap {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+#sample .pf-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+}
+
+#sample .pf-block {
+  position: relative;
+}
+
+#sample .pf-block__head {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+#sample .pf-block__title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 148px;
+  min-height: 54px;
+  padding: 0 28px;
+  border-radius: 999px;
+  border: 2px solid #e0bfd2;
+  background: rgba(255,255,255,.72);
+  color: #cf79a7;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+#sample .pf-slider {
+  position: relative;
+  padding: 0 54px;
+}
+
+#sample .pf-slider__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+#sample .pf-slider__track {
+  display: flex;
+  align-items: stretch;
+  gap: 18px;
+  will-change: transform;
+}
+
+#sample .pf-slide {
+  flex: 0 0 100%;
+}
+
+#sample .pf-grid {
+  display: grid;
+  gap: 18px;
+}
+
+#sample .pf-grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+#sample .pf-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+#sample .pf-grid--1 {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+#sample .pf-shot {
+  margin: 0;
+}
+
+#sample .pf-shot__link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+#sample .pf-shot__media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+#sample .pf-shot__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* 눈알 */
+#sample .pf-block.is-eye .pf-shot__media {
+  aspect-ratio: 1 / 1;
+}
+
+/* 헤드 */
+#sample .pf-block.is-head .pf-shot__media {
+  aspect-ratio: 1 / 1;
+}
+
+/* 삼면도 */
+#sample .pf-block.is-threeview .pf-shot__media {
+  aspect-ratio: 16 / 9;
+}
+
+#sample .pf-shot__caption {
+  padding: 12px 8px 0;
+  text-align: center;
+}
+
+#sample .pf-shot__name {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #d74d79;
+}
+
+#sample .pf-shot__desc {
+  margin: 6px 0 0;
+  font-size: .95rem;
+  line-height: 1.6;
+  color: #6b6271;
+}
+
+#sample .pf-shot__placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 240px;
+  color: #9f96a2;
+  font-weight: 700;
+}
+
+/* 화살표 */
+#sample .pf-slider__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  width: 42px;
+  height: 96px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+#sample .pf-slider__nav.is-prev {
+  left: 2px;
+}
+
+#sample .pf-slider__nav.is-next {
+  right: 2px;
+}
+
+#sample .pf-slider__nav span {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+#sample .pf-slider__nav.is-prev span::before,
+#sample .pf-slider__nav.is-next span::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 28px;
+  height: 28px;
+  border-top: 10px solid #ff1e1e;
+  border-right: 10px solid #ff1e1e;
+  border-radius: 8px;
+}
+
+#sample .pf-slider__nav.is-prev span::before {
+  left: 6px;
+  transform: translateY(-50%) rotate(-135deg);
+}
+
+#sample .pf-slider__nav.is-next span::before {
+  right: 6px;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+#sample .pf-block.is-eye {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+#sample .pf-block.is-head {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+#sample .pf-block.is-threeview {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+#sample .pf-slide {
+  flex: 0 0 100%;
+  width: 100%;
+}
+
+#sample .pf-grid {
+  width: 100%;
+  align-items: start;
+}
+
+#sample .pf-block.is-eye .pf-shot__media {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+#sample .pf-block.is-eye .pf-shot__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#sample .pf-shot.is-eye-left .pf-shot__media img {
+  object-position: left center !important;
+}
+
+#sample .pf-shot.is-eye-right .pf-shot__media img {
+  object-position: right center !important;
+}

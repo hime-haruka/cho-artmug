@@ -779,7 +779,7 @@ function initPortfolioLoopSliders(root = document) {
 
     function update(animate = true) {
       const activeSlide = slides[current];
-      if (!activeSlide) return;
+      if (!viewport || !activeSlide) return;
 
       const viewportWidth = viewport.clientWidth;
       const slideWidth = activeSlide.offsetWidth;
@@ -791,6 +791,14 @@ function initPortfolioLoopSliders(root = document) {
         : "none";
 
       track.style.transform = `translate3d(-${targetX}px, 0, 0)`;
+    }
+
+    function syncLayout() {
+      update(false);
+
+      requestAnimationFrame(() => {
+        update(false);
+      });
     }
 
     function goNext() {
@@ -827,10 +835,33 @@ function initPortfolioLoopSliders(root = document) {
     let resizeTimer = null;
     window.addEventListener("resize", () => {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => update(false), 100);
+      resizeTimer = setTimeout(syncLayout, 100);
     });
 
-    update(false);
+    const images = [...slider.querySelectorAll("img")];
+    if (images.length) {
+      let pending = 0;
+
+      const handleImageReady = () => {
+        pending -= 1;
+        syncLayout();
+      };
+
+      images.forEach(img => {
+        if (img.complete) return;
+        pending += 1;
+        img.addEventListener("load", handleImageReady, { once: true });
+        img.addEventListener("error", handleImageReady, { once: true });
+      });
+
+      syncLayout();
+
+      if (pending > 0) {
+        window.addEventListener("load", syncLayout, { once: true });
+      }
+    } else {
+      syncLayout();
+    }
   });
 }
 

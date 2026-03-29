@@ -234,4 +234,167 @@
 </body>
 
 <script src="./static/js/3d.js" defer></script>
+<script>
+(function () {
+  const PARENT_ORIGIN = '*';
+  let lastHeight = 0;
+  let resizeTimer = null;
+  let started = false;
+
+  function sendLoading(state) {
+    try {
+      window.parent.postMessage(
+        { type: 'ARTMUG_IFRAME_LOADING', state },
+        PARENT_ORIGIN
+      );
+    } catch (err) {}
+  }
+
+  function getDocHeight() {
+    const body = document.body;
+    const html = document.documentElement;
+
+    return Math.max(
+      body ? body.scrollHeight : 0,
+      body ? body.offsetHeight : 0,
+      html ? html.clientHeight : 0,
+      html ? html.scrollHeight : 0,
+      html ? html.offsetHeight : 0
+    );
+  }
+
+  function postHeight(force = false) {
+    const nextHeight = Math.ceil(getDocHeight());
+    if (!nextHeight) return;
+
+    if (!force && Math.abs(nextHeight - lastHeight) < 4) return;
+
+    lastHeight = nextHeight;
+
+    try {
+      window.parent.postMessage(
+        {
+          type: 'ARTMUG_IFRAME_HEIGHT',
+          height: nextHeight
+        },
+        PARENT_ORIGIN
+      );
+    } catch (err) {}
+  }
+
+  function scheduleHeight(force = false) {
+    clearTimeout(resizeTimer);
+
+    requestAnimationFrame(() => {
+      postHeight(force);
+
+      requestAnimationFrame(() => {
+        postHeight(force);
+      });
+    });
+
+    resizeTimer = setTimeout(() => {
+      postHeight(force);
+    }, 120);
+
+    setTimeout(() => postHeight(force), 300);
+    setTimeout(() => postHeight(force), 700);
+  }
+
+  function bindImageLoad() {
+    const images = Array.from(document.images || []);
+    if (!images.length) {
+      scheduleHeight(true);
+      return;
+    }
+
+    images.forEach(img => {
+      if (img.complete) return;
+
+      img.addEventListener('load', () => scheduleHeight(true), { once: true });
+      img.addEventListener('error', () => scheduleHeight(true), { once: true });
+    });
+  }
+
+  function bindAccordionChanges() {
+    document.addEventListener('click', function (e) {
+      const trigger = e.target.closest(
+        '.ui-accordion__trigger, .collab-accordion__trigger, [aria-expanded]'
+      );
+      if (!trigger) return;
+
+      setTimeout(() => scheduleHeight(true), 0);
+      setTimeout(() => scheduleHeight(true), 180);
+      setTimeout(() => scheduleHeight(true), 360);
+      setTimeout(() => scheduleHeight(true), 700);
+    }, true);
+
+    document.addEventListener('transitionend', function (e) {
+      const target = e.target;
+      if (!target) return;
+
+      if (
+        target.classList.contains('ui-accordion__panel') ||
+        target.classList.contains('collab-accordion__panel') ||
+        e.propertyName === 'height' ||
+        e.propertyName === 'max-height'
+      ) {
+        scheduleHeight(true);
+      }
+    }, true);
+  }
+
+  function bindMutationObserver() {
+    const mo = new MutationObserver(() => {
+      scheduleHeight(false);
+    });
+
+    mo.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      characterData: false
+    });
+  }
+
+  function bindResizeEvents() {
+    window.addEventListener('resize', () => scheduleHeight(true));
+    window.addEventListener('load', () => {
+      scheduleHeight(true);
+      sendLoading('done');
+    });
+
+    window.addEventListener('message', function (e) {
+      if (!e.data) return;
+      if (e.data.type === 'ARTMUG_PARENT_READY') {
+        scheduleHeight(true);
+      }
+    });
+  }
+
+  function start() {
+    if (started) return;
+    started = true;
+
+    sendLoading('start');
+    bindImageLoad();
+    bindAccordionChanges();
+    bindMutationObserver();
+    bindResizeEvents();
+
+    scheduleHeight(true);
+    setTimeout(() => scheduleHeight(true), 500);
+    setTimeout(() => {
+      scheduleHeight(true);
+      sendLoading('done');
+    }, 1200);
+  }
+
+  if (document.readyState !== 'loading') {
+    start();
+  } else {
+    document.addEventListener('DOMContentLoaded', start);
+  }
+})();
+</script>
 </html>
